@@ -7,14 +7,16 @@
     zsh.enable = true;
   };
 
-  systemPackages = with pkgs; [
-    bind
-    curl
-    direnv
-    firefox
-    git
-    mkpasswd
-    nix-direnv
-    unstable.nvim
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      bind
+      curl
+      direnv
+      firefox
+      git
+      mkpasswd
+      nix-direnv
+      unstable.nvim
+    ];
+  };
 }

@@ -81,6 +81,17 @@
 
   time.timeZone = "Europe/Berlin";
 
+  users = {
+    users.serowy = {
+      createHome = true;
+      extraGroups = ["docker" "wheel" "video" "audio" "disk" "networkmanager"];
+      group = "users";
+      home = "/home/serowy";
+      isNormalUser = true;
+      uid = 1000;
+    };
+  };
+
   virtualisation = {
     docker = {
       enable = true;
