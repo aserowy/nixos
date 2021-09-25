@@ -16,7 +16,7 @@
       git
       mkpasswd
       nix-direnv
-      unstable.nvim
+      unstable.neovim
     ];
   };
 }
