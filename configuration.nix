@@ -14,7 +14,22 @@
     };
   };
 
+  fonts = {
+    fontDir.enable = true;
+    enableGhostscriptFonts = true;
+    fonts = with pkgs; [
+      powerline-fonts
+      nerdfonts
+    ];
+  };
+
   networking = {
+    firewall = {
+      enable = true;
+      allowedTCPPorts = [ 80 443 2022 ];
+      allowedUDPPorts = [ 53 ];
+      allowPing = true;
+    };
     useDHCP = false;
     interfaces.eno1.useDHCP = true;
     hostName = "desktop-nixos";
@@ -88,6 +103,7 @@
       group = "users";
       home = "/home/serowy";
       isNormalUser = true;
+      shell = pkgs.zsh;
       uid = 1000;
     };
   };

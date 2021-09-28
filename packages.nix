@@ -9,14 +9,7 @@
 
   environment = {
     systemPackages = with pkgs; [
-      bind
-      curl
-      direnv
-      firefox
-      git
       mkpasswd
-      nix-direnv
-      unstable.neovim
     ];
   };
 }
