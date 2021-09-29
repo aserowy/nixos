@@ -4,9 +4,13 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    dots = {
+      url = "github:aserowy/dots";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, ... }: {
+  outputs = { dots, nixpkgs, nixpkgs-unstable, ... }: {
     nixosConfigurations = {
       workstation = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -28,6 +32,7 @@
                 ];
             }
           )
+          dots.nixosModules."serowy@desktop-nixos"
         ];
       };
     };
