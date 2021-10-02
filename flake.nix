@@ -41,7 +41,7 @@
               users.serowy = import ./home/environments/desktop.nix;
             };
           } */
-          dots.nixosModules."serowy@desktop-nixos"
+          dots.nixosModules."serowy@desktop-nixos" {}
         ];
       };
     };
