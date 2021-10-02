@@ -1,5 +1,4 @@
 { config, pkgs, ... }:
-
 {
   imports =
     [
@@ -12,6 +11,12 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
+  };
+
+  environment = {
+    systemPackages = with pkgs; [
+      mkpasswd
+    ];
   };
 
   fonts = {
@@ -44,9 +49,10 @@
     trustedUsers = [ "@wheel" ];
     extraOptions = ''
       experimental-features = nix-command flakes
-      keep-outputs = true
-      keep-derivations = true
     '';
+      /* keep-outputs = true
+      keep-derivations = true
+    ''; */
     gc = {
       automatic = true;
       dates = "weekly";
@@ -60,7 +66,6 @@
 
   nixpkgs = {
     config = {
-      # allowBroken = true;
       allowUnfree = true;
     };
   };
@@ -103,6 +108,13 @@
       group = "users";
       home = "/home/serowy";
       isNormalUser = true;
+      packages = with pkgs.unstable; [
+        fzf
+        gcc
+        gnumake
+        ripgrep
+        unzip
+      ];
       shell = pkgs.zsh;
       uid = 1000;
     };

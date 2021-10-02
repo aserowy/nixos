@@ -4,15 +4,15 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    /* dots = {
+    dots = {
       url = "github:aserowy/dots";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
-    }; */
+    };
     /* home-manager.url = "github:nix-community/home-manager"; */
   };
 
-  outputs = { nixpkgs, nixpkgs-unstable, ... }: {
-  /* outputs = { dots, nixpkgs, nixpkgs-unstable, ... }: { */
+  /* outputs = { nixpkgs, nixpkgs-unstable, ... }: { */
+  outputs = { dots, nixpkgs, nixpkgs-unstable, ... }: {
   /* outputs = { home-manager, nixpkgs, nixpkgs-unstable, ... }: { */
     nixosConfigurations = {
       workstation = nixpkgs.lib.nixosSystem {
@@ -31,7 +31,6 @@
                 [
                   ./hardware-configuration.nix
                   ./configuration.nix
-                  ./packages.nix
                 ];
             }
           )
@@ -42,7 +41,7 @@
               users.serowy = import ./home/environments/desktop.nix;
             };
           } */
-          /* dots.nixosModules."serowy@desktop-nixos" */
+          dots.nixosModules."serowy@desktop-nixos"
         ];
       };
     };
