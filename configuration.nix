@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -17,6 +16,11 @@
     systemPackages = with pkgs; [
       mkpasswd
     ];
+
+    # FIX: workaround for large scaling menues
+    variables = {
+      GDK_SCALE = "0.5";
+    };
   };
 
   fonts = {
@@ -50,9 +54,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-      /* keep-outputs = true
-      keep-derivations = true
-    ''; */
     gc = {
       automatic = true;
       dates = "weekly";
@@ -75,6 +76,9 @@
       enable = true;
       displayManager.sddm.enable = true;
       desktopManager.plasma5.enable = true;
+
+      # FIX: workaround for large scaling menues
+      dpi = 96;
     };
     openssh = {
       enable = true;
@@ -93,7 +97,7 @@
       flags = [
         "--recreate-lock-file"
         "--no-write-lock-file"
-        "-L" # print build logs
+        "-L"
        ];
       dates = "daily";
     };
@@ -108,13 +112,6 @@
       group = "users";
       home = "/home/serowy";
       isNormalUser = true;
-      packages = with pkgs.unstable; [
-        fzf
-        gcc
-        gnumake
-        ripgrep
-        unzip
-      ];
       shell = pkgs.zsh;
       uid = 1000;
     };

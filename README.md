@@ -34,7 +34,11 @@ sudo mkfs.ext4 -L root /dev/vg/root
 sudo mkswap -L swap /dev/vg/swap
 
 swapon -s
+```
 
+### install with flake
+
+```sh
 # mount for install
 sudo mount /dev/disk/by-label/root /mnt
 sudo mkdir -p /mnt/boot
@@ -49,4 +53,11 @@ sudo nixos-install --root /mnt --flake /mnt/etc/nixos#workstation
 sudo rm -rf /mnt/etc/nixos
 
 reboot
+```
+
+### switch channel to unstable for direnv
+
+```sh
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixos
+sudo nix-channel --update
 ```
