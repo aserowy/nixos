@@ -53,6 +53,8 @@
     trustedUsers = [ "@wheel" ];
     extraOptions = ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
     gc = {
       automatic = true;
@@ -84,7 +86,7 @@
       enable = true;
       permitRootLogin = "no";
       passwordAuthentication = false;
-      ports = [2022];
+      ports = [ 2022 ];
     };
   };
 
@@ -98,7 +100,7 @@
         "--recreate-lock-file"
         "--no-write-lock-file"
         "-L"
-       ];
+      ];
       dates = "daily";
     };
   };
@@ -108,7 +110,7 @@
   users = {
     users.serowy = {
       createHome = true;
-      extraGroups = ["docker" "wheel" "video" "audio" "disk" "networkmanager"];
+      extraGroups = [ "docker" "wheel" "video" "audio" "disk" "networkmanager" ];
       group = "users";
       home = "/home/serowy";
       isNormalUser = true;
