@@ -13,11 +13,10 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-
           {
             nixpkgs.overlays = [
               nur.overlay
-              /* (import ./home/programs/edge-overlay) */
+              (import ./home/pkgs)
             ];
           }
           home.nixosModule
