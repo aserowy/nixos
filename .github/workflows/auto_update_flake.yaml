@@ -1,0 +1,39 @@
+name: "auto_update_flake"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "* 2 * * *"
+
+jobs:
+  update_flake:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: install nix
+        uses: cachix/install-nix-action@v14
+        with:
+          install_url: https://github.com/numtide/nix-flakes-installer/releases/download/nix-2.4pre20210823_af94b54/install
+          nix_path: nixpkgs=channel:nixos-unstable
+          extra_nix_config: |
+            experimental-features = nix-command flakes
+
+      - name: update flake
+        run: |
+          git config --local user.email "serowy@hotmail.com"
+          git config --local user.name "aserowy"
+          nix flake update --commit-lock-file
+
+      - name: check flake
+        run: nix flake check -v --show-trace
+        timeout-minutes: 90
+
+      - name: push changes
+        uses: ad-m/github-push-action@v0.6.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
