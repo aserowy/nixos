@@ -26,6 +26,7 @@ jobs:
         run: |
           git config --local user.email "serowy@hotmail.com"
           git config --local user.name "aserowy"
+          git submodule update --init --recursive
           nix flake update --commit-lock-file
 
       - name: check flake

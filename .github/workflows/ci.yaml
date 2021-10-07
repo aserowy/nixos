@@ -26,5 +26,7 @@ jobs:
             experimental-features = nix-command flakes
 
       - name: check flake
-        run: nix flake check -v --show-trace
+        run: |
+          git submodule update --init --recursive
+          nix flake check -v --show-trace
         timeout-minutes: 90
