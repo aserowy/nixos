@@ -14,6 +14,12 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: configure git
+        run: |
+          git config --local user.email "serowy@hotmail.com"
+          git config --local user.name "aserowy"
+          git submodule update --init --recursive
+
       - name: install nix
         uses: cachix/install-nix-action@v14
         with:
@@ -23,11 +29,7 @@ jobs:
             experimental-features = nix-command flakes
 
       - name: update flake
-        run: |
-          git config --local user.email "serowy@hotmail.com"
-          git config --local user.name "aserowy"
-          git submodule update --init --recursive
-          nix flake update --commit-lock-file
+        run: nix flake update --commit-lock-file
 
       - name: check flake
         run: nix flake check -v --show-trace
