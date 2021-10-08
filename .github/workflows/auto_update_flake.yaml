@@ -32,9 +32,7 @@ jobs:
         run: nix flake update --commit-lock-file
 
       - name: check flake
-        run: |
-          nix build
-          nix flake check -v --show-trace
+        run: nix flake check -v --show-trace
         timeout-minutes: 90
 
       - name: push changes
