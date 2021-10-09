@@ -16,11 +16,6 @@
     systemPackages = with pkgs; [
       mkpasswd
     ];
-
-    # FIX: workaround for large scaling menues
-    variables = {
-      GDK_SCALE = "0.5";
-    };
   };
 
   fonts = {
@@ -74,15 +69,6 @@
   };
 
   services = {
-    # TODO: remove after sway is configured!
-    xserver = {
-      enable = true;
-      displayManager.sddm.enable = true;
-      desktopManager.plasma5.enable = true;
-
-      # FIX: workaround for large scaling menues
-      dpi = 96;
-    };
     openssh = {
       enable = true;
       permitRootLogin = "no";
