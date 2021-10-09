@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "cachix": {
+      "locked": {
+        "lastModified": 1633709683,
+        "narHash": "sha256-KVJEToVd6SuUqc2XFIpfSjns07orqEWzIq9AcF/SIf8=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "ce7a1190a0fa4ba3465b5f5471b08567060ca14c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-21.05",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "home": {
       "inputs": {
         "nixpkgs": "nixpkgs"
@@ -32,7 +48,42 @@
         "type": "indirect"
       }
     },
+    "nixpkgs-wayland": {
+      "inputs": {
+        "cachix": "cachix",
+        "nixpkgs": "nixpkgs_3"
+      },
+      "locked": {
+        "lastModified": 1633747189,
+        "narHash": "sha256-QR+V0O9OkYU+mMeUDAtxDhnEowZYqoQwWv9oSY+1zBc=",
+        "owner": "nix-community",
+        "repo": "nixpkgs-wayland",
+        "rev": "d89a250ba5c82b741bb66d2de555679b3efffff9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "nixpkgs-wayland",
+        "type": "github"
+      }
+    },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1633617995,
+        "narHash": "sha256-+RfYXTAXtULLSAMFDHWaA20NhNg3YQ9GcntVJqDDjSI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "70088dc29994c32f8520150e34c6e57e8453f895",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1633617995,
         "narHash": "sha256-+RfYXTAXtULLSAMFDHWaA20NhNg3YQ9GcntVJqDDjSI=",
@@ -50,11 +101,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1633744644,
-        "narHash": "sha256-aFSd9osCGQJjGmssRt5ysJNpnXcpVTGEzwcE1xhXcac=",
+        "lastModified": 1633752238,
+        "narHash": "sha256-9gPrZXmTiGoF0OkN8PKOZaV8Mz0l0AELX9iYG/sfKss=",
         "owner": "nix-community",
         "repo": "NUR",
-        "rev": "a99baa2b37fef031f2b69f3376d1a59d55c6e41a",
+        "rev": "997b88bd35c05318cfe52a304e6d1ee60a4b8c55",
         "type": "github"
       },
       "original": {
@@ -67,6 +118,7 @@
       "inputs": {
         "home": "home",
         "nixpkgs": "nixpkgs_2",
+        "nixpkgs-wayland": "nixpkgs-wayland",
         "nur": "nur"
       }
     }

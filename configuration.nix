@@ -74,6 +74,7 @@
   };
 
   services = {
+    # TODO: remove after sway is configured!
     xserver = {
       enable = true;
       displayManager.sddm.enable = true;
