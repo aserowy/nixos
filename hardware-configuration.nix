@@ -25,6 +25,8 @@
       { device = "/dev/disk/by-label/swap"; }
     ];
 
-  # high-resolution display
-  hardware.video.hidpi.enable = lib.mkDefault true;
+  hardware = {
+    opengl.enable = lib.mkDefault true;
+    video.hidpi.enable = lib.mkDefault true;
+  };
 }
