@@ -96,7 +96,14 @@
   users = {
     users.serowy = {
       createHome = true;
-      extraGroups = [ "docker" "wheel" "video" "audio" "disk" "networkmanager" ];
+      extraGroups = [
+        "audio"
+        "disk"
+        "docker"
+        "networkmanager"
+        "video"
+        "wheel"
+      ];
       group = "users";
       home = "/home/serowy";
       isNormalUser = true;
