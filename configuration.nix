@@ -74,6 +74,10 @@
       passwordAuthentication = false;
       ports = [ 2022 ];
     };
+    pipewire = {
+      enable = true;
+      socketActivation = true;
+    };
   };
 
   system = {

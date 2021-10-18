@@ -6,4 +6,6 @@ mkShell rec {
     pkgs.nodePackages.prettier
     pkgs.rnix-lsp
   ];
+  shellHook = ''
+  '';
 }

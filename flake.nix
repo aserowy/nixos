@@ -1,5 +1,5 @@
 {
-  description = "NixOS configuration";
+  description = "NixOS configurations";
 
   inputs = {
     home.url = "github:nix-community/home-manager";
@@ -16,7 +16,6 @@
           {
             nixpkgs.overlays = [
               nur.overlay
-
               (import ./home/pkgs)
             ];
           }
@@ -25,7 +24,6 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-
               users.serowy = import ./home/environments/desktop.nix;
             };
           }
