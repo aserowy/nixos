@@ -30,12 +30,6 @@
   hardware = {
     opengl.enable = lib.mkDefault true;
 
-    pulseaudio = {
-      enable = true;
-      package = pkgs.pulseaudioFull;
-      support32Bit = true;
-    };
-
     video.hidpi.enable = lib.mkDefault true;
   };
 }
