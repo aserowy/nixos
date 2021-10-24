@@ -67,6 +67,8 @@
     };
   };
 
+  programs.steam.enable = true;
+
   security.rtkit.enable = true;
 
   services = {
@@ -79,7 +81,7 @@
     pipewire = {
       enable = true;
       alsa = {
-        enable =true;
+        enable = true;
         support32Bit = true;
       };
       jack.enable = true;
