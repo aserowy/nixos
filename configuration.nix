@@ -67,7 +67,11 @@
     };
   };
 
-  programs.steam.enable = true;
+  programs = {
+    steam.enable = true;
+
+    wshowkeys.enable = true;
+  };
 
   security.rtkit.enable = true;
 
