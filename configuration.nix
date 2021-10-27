@@ -68,19 +68,20 @@
   };
 
   programs = {
+    seahorse.enable = true;
     steam.enable = true;
   };
 
   security.rtkit.enable = true;
 
   services = {
+    gnome.gnome-keyring.enable = true;
     openssh = {
       enable = true;
       permitRootLogin = "no";
       passwordAuthentication = false;
       ports = [ 2022 ];
     };
-
     pipewire = {
       enable = true;
       alsa = {
