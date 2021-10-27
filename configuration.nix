@@ -68,14 +68,14 @@
   };
 
   programs = {
+    seahorse.enable = true;
     steam.enable = true;
-
-    wshowkeys.enable = true;
   };
 
   security.rtkit.enable = true;
 
   services = {
+    gnome.gnome-keyring.enable = true;
     openssh = {
       enable = true;
       permitRootLogin = "no";
