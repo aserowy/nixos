@@ -2,7 +2,9 @@
 {
   imports = [
     ./gtk.nix
+    ./kanshi.nix
     ./sway.nix
+    ./swayidle.nix
   ];
 
   fonts = {
