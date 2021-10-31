@@ -1,4 +1,3 @@
-
 {
   description = "NixOS configurations";
 
@@ -14,7 +13,6 @@
       desktop-nixos = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./configuration.nix
           {
             nixpkgs.overlays = [
               nur.overlay
@@ -23,6 +21,12 @@
               (import ./home/pkgs)
             ];
           }
+
+          ./system/intel_nuc
+          ./shell/sway
+
+          ./users/serowy.nix
+
           home.nixosModule
           {
             home-manager = {
@@ -36,4 +40,3 @@
     };
   };
 }
-

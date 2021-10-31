@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 {
-  imports = [
-    ./hardware-configuration.nix
-  ];
-
   boot = {
     loader = {
       systemd-boot.enable = true;
@@ -17,15 +13,6 @@
     ];
   };
 
-  fonts = {
-    fontDir.enable = true;
-    enableGhostscriptFonts = true;
-    fonts = with pkgs; [
-      powerline-fonts
-      nerdfonts
-    ];
-  };
-
   networking = {
     firewall = {
       enable = true;
@@ -35,7 +22,6 @@
     };
     useDHCP = false;
     interfaces.eno1.useDHCP = true;
-    hostName = "desktop-nixos";
   };
 
   nix = {
@@ -67,30 +53,20 @@
     };
   };
 
-  programs = {
-    seahorse.enable = true;
-    steam.enable = true;
-  };
+  programs.dconf.enable = true;
 
   security.rtkit.enable = true;
 
   services = {
-    gnome.gnome-keyring.enable = true;
+    dbus = {
+      enable = true;
+      packages = [ pkgs.dconf ];
+    };
     openssh = {
       enable = true;
       permitRootLogin = "no";
       passwordAuthentication = false;
       ports = [ 2022 ];
-    };
-    pipewire = {
-      enable = true;
-      alsa = {
-        enable = true;
-        support32Bit = true;
-      };
-      jack.enable = true;
-      pulse.enable = true;
-      socketActivation = true;
     };
   };
 
@@ -110,43 +86,4 @@
   };
 
   time.timeZone = "Europe/Berlin";
-
-  users = {
-    users.serowy = {
-      createHome = true;
-      extraGroups = [
-        "audio"
-        "disk"
-        "docker"
-        "networkmanager"
-        "video"
-        "wheel"
-      ];
-      group = "users";
-      home = "/home/serowy";
-      isNormalUser = true;
-      openssh.authorizedKeys.keys = [ "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAoChM+zDcZalCCTTF4NTeNyBcrbLBs8b0vBTp/EW1nX serowy" ];
-      shell = pkgs.zsh;
-      uid = 1000;
-    };
-  };
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune.enable = true;
-      enableOnBoot = true;
-    };
-  };
-
-  xdg = {
-    portal = {
-      enable = true;
-      gtkUsePortal = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
-      ];
-    };
-  };
 }
