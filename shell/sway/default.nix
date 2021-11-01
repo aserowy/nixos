@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 {
   imports = [
+    #./greetd.nix
+
     ./gtk.nix
     ./kanshi.nix
     ./sway.nix

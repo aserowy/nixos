@@ -9,6 +9,8 @@
   networking.hostName = "desktop-nixos";
 
   services = {
+    onedrive.enable = true;
+
     pipewire = {
       enable = true;
       alsa = {
