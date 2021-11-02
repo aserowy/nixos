@@ -1,10 +1,13 @@
 { config, pkgs, ... }:
 {
   imports = [
+    # FIX: not functional right now
     #./greetd.nix
 
+    # FIX: needs config under home
+    #./kanshi.nix
+
     ./gtk.nix
-    ./kanshi.nix
     ./sway.nix
     ./swayidle.nix
   ];
