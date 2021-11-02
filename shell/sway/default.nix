@@ -18,7 +18,7 @@
     ./gtk.nix
     ./rofi
     ./spotify.nix
-    ./sway.nix
+    ./sway
     ./swayidle.nix
     ./waybar
   ];

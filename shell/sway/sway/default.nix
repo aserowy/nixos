@@ -1,5 +1,10 @@
 { config, pkgs, lib, ... }:
 {
+  environment.etc = {
+    "sway/config".source = ./src/config;
+    "sway/scripts".source = ./src/scripts;
+  };
+
   programs.sway = {
     enable = true;
     wrapperFeatures.gtk = true;
