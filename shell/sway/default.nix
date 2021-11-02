@@ -10,6 +10,7 @@
     ../shared/dunst.nix
 
     ./gtk.nix
+    ./rofi
     ./sway.nix
     ./swayidle.nix
   ];

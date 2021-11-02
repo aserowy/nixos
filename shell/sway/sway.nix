@@ -7,8 +7,6 @@
       jq
       pv
 
-      dunst
-      rofi
       sway-unwrapped
       sway-contrib.grimshot
       swaybg
