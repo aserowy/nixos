@@ -1,10 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 {
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "agreety --cmd $SHELL";
+        command = "${pkgs.greetd.greetd}/bin/agreety --cmd sway";
         user = "greeter";
       };
     };

@@ -8,15 +8,13 @@
   ];
 
   imports = [
-    # FIX: not functional right now
-    #./greetd.nix
-
     # FIX: needs config under home
     #./kanshi.nix
 
     ../shared/alacritty.nix
     ../shared/dunst.nix
 
+    ./greetd.nix
     ./gtk.nix
     ./rofi
     ./spotify.nix
