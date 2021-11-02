@@ -4,14 +4,12 @@
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
+      alacritty
       jq
       pv
-
       sway-unwrapped
-      sway-contrib.grimshot
       swaybg
       swappy
-      waybar
       wf-recorder
 
       xorg.xlsclients

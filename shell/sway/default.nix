@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    pavucontrol
+    sway-contrib.grimshot
+    wezterm
+  ];
+
   imports = [
     # FIX: not functional right now
     #./greetd.nix
@@ -11,8 +17,10 @@
 
     ./gtk.nix
     ./rofi
+    ./spotify.nix
     ./sway.nix
     ./swayidle.nix
+    ./waybar
   ];
 
   fonts = {
