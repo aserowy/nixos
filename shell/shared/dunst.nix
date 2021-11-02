@@ -41,18 +41,20 @@ in
       format="<b>%s</b>\n%b"
       frame_color="#23272e"
       frame_width=10
-      geometry="400x5-20-20"
       icon_path="${icon_paths}"
       icon_position="left"
       markup="full"
       max_icon_size=32
       mouse_left_click="do_action,close_current"
       mouse_right_click="close_current"
+      origin="bottom-right"
+      offset="20x20"
       separator_color="frame"
       separator_height=10
       stack_duplicates="true"
       startup_notification="false"
       transparency=0
+      width=400
       word_wrap="yes"
 
       [urgency_critical]
