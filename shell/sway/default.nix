@@ -7,6 +7,8 @@
     # FIX: needs config under home
     #./kanshi.nix
 
+    ../shared/dunst.nix
+
     ./gtk.nix
     ./sway.nix
     ./swayidle.nix
