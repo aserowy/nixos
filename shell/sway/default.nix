@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    edge
     pavucontrol
     sway-contrib.grimshot
     wezterm
@@ -13,6 +14,7 @@
     # FIX: needs config under home
     #./kanshi.nix
 
+    ../shared/alacritty.nix
     ../shared/dunst.nix
 
     ./gtk.nix

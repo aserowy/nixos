@@ -16,8 +16,9 @@ fi
 SR=true zsh -c "alacritty \
     -o window.dimensions.columns=50 \
     -o window.dimensions.lines=3 \
-    -o font.size=16.0 \
+    -o font.size=12.0 \
     -o window.padding.x=20 \
     -o window.padding.y=20 \
     --title "fzf-switcher" \
+    --config-file "/etc/alacritty.yaml" \
     -e /etc/sway/scripts/rename_workspace.sh"&

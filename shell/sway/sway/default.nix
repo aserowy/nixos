@@ -9,7 +9,6 @@
     enable = true;
     wrapperFeatures.gtk = true;
     extraPackages = with pkgs; [
-      alacritty
       jq
       pv
       sway-unwrapped
