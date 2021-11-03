@@ -1,15 +1,18 @@
 #!/bin/sh
 
-OPTIONS=""
+OPTIONS="music\nsocial\n"
 
 workspaces=($(swaymsg -t get_workspaces -r | jq -r -c '.[] | .name'))
 for workspace in "${workspaces[@]}"; do
-    OPTIONS="$OPTIONS$workspace\n"
+    if [[ $OPTIONS != *$workspace* ]]
+    then
+        OPTIONS="$OPTIONS$workspace\n"
+    fi
 done
 
 if [ "$@" ]
 then
     swaymsg move container to workspace $@ >/dev/null 2>&1
 else
-	echo -e $OPTIONS
+    echo -e $OPTIONS
 fi
