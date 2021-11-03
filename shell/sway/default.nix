@@ -2,22 +2,23 @@
 {
   environment.systemPackages = with pkgs; [
     edge
+    lf
     pavucontrol
     sway-contrib.grimshot
     wezterm
   ];
 
   imports = [
+    ../shared/alacritty.nix
+    ../shared/dunst.nix
+    ../shared/gtk.nix
+    ../shared/spotify.nix
+
     # FIX: needs config under home
     #./kanshi.nix
 
-    ../shared/alacritty.nix
-    ../shared/dunst.nix
-
-    ./gtk.nix
     ./tuigreeter.nix
     ./rofi
-    ./spotify.nix
     ./sway
     ./swayidle.nix
     ./waybar

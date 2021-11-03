@@ -23,7 +23,7 @@
           }
 
           ./system/intel_nuc
-          ./shell/sway
+          ./shell/i3
 
           ./users/serowy.nix
 
@@ -32,7 +32,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.serowy = import ./home/environments/desktop.nix;
+              users.serowy = import ./home/environments/desktop-i3.nix;
             };
           }
         ];

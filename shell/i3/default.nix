@@ -1,5 +1,22 @@
 { config, pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    edge
+    lf
+    pavucontrol
+    wezterm
+  ];
+
+  imports = [
+    ../shared/alacritty.nix
+    ../shared/dunst.nix
+    ../shared/gtk.nix
+    ../shared/spotify.nix
+
+    ./i3
+    ./picom.nix
+  ];
+
   fonts = {
     fontDir.enable = true;
     enableGhostscriptFonts = true;
@@ -16,17 +33,6 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
-  };
-
-  xdg = {
-    portal = {
-      enable = true;
-      gtkUsePortal = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-gtk
-        xdg-desktop-portal-wlr
-      ];
-    };
   };
 }
 
