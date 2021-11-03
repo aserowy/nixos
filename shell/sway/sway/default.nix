@@ -11,6 +11,7 @@
     sessionVariables = {
       SDL_VIDEODRIVER = "wayland";
       XDG_CURRENT_DESKTOP = "sway";
+      XDG_SESSION_DESKTOP = "sway";
       XDG_SESSION_TYPE = "wayland";
     };
   };

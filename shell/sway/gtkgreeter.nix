@@ -1,7 +1,21 @@
 { config, pkgs, ... }:
 let
+  gtkConfig = pkgs.writeText "greeter-gtk-config" ''
+    window {
+      background-color: #282c34;
+    }
+
+    box#body {
+      background-color: #23272e;
+      border: 1;
+      border-color: #61afef;
+      border-radius: 6px;
+      padding: 30px 15px;
+    }
+  '';
+
   swayConfig = pkgs.writeText "greeter-sway-config" ''
-    exec "${pkgs.greetd.wlgreet}/bin/wlgreet --command sway; swaymsg exit"
+    exec "${pkgs.greetd.gtkgreet}/bin/gtkgreet -l -s ${gtkConfig}; swaymsg exit"
 
     bindsym Mod4+q exec swaynag \
       -t warning \
@@ -13,9 +27,17 @@ let
   '';
 in
 {
-  environment.systemPackages = with pkgs; [
-    greetd.wlgreet
-  ];
+  environment = {
+    etc."greetd/environments" = {
+      text = ''
+        sway
+      '';
+    };
+
+    systemPackages = with pkgs; [
+      greetd.gtkgreet
+    ];
+  };
 
   services.greetd = {
     enable = true;

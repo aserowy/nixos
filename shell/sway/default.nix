@@ -14,8 +14,8 @@
     ../shared/alacritty.nix
     ../shared/dunst.nix
 
-    ./greetd.nix
     ./gtk.nix
+    ./tuigreeter.nix
     ./rofi
     ./spotify.nix
     ./sway
