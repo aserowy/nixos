@@ -1,8 +1,18 @@
 { config, pkgs, lib, ... }:
 {
-  environment.etc = {
-    "sway/config".source = ./src/config;
-    "sway/scripts".source = ./src/scripts;
+  environment = {
+    etc = {
+      "sway/config".source = ./src/config;
+      "sway/config.d/99_systemd_target.conf".source = ./src/systemd_target.conf;
+
+      "sway/scripts".source = ./src/scripts;
+    };
+
+    sessionVariables = {
+      SDL_VIDEODRIVER = "wayland";
+      XDG_CURRENT_DESKTOP = "sway";
+      XDG_SESSION_TYPE = "wayland";
+    };
   };
 
   programs.sway = {

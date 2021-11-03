@@ -115,4 +115,3 @@ bar {
 # SESSION TARGET
 
 include /etc/sway/config.d/*
-exec "dbus-update-activation-environment --systemd --all; systemctl --user import-environment; systemctl --user start sway-session.target"
