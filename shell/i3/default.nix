@@ -15,6 +15,7 @@
     ../shared/spotify.nix
 
     ./i3
+    ./lightdm.nix
     ./picom.nix
   ];
 

@@ -3,8 +3,6 @@
   imports = [
     ../base.nix
 
-    ../patches/gtk_hidpi_patch.nix
-
     ./hardware-configuration.nix
   ];
 

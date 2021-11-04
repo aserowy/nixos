@@ -29,7 +29,5 @@
 
   hardware = {
     opengl.enable = lib.mkDefault true;
-
-    video.hidpi.enable = lib.mkDefault true;
   };
 }
