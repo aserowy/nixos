@@ -2,8 +2,8 @@
 
 WORKSPACE=""
 
-output=$(i3-msg -t get_outputs | jq -r -c 'map(select(.focused == true)) | .[] | .name')
-current=$(i3-msg -t get_outputs | jq -r -c 'map(select(.focused == true)) | .[] | .current_workspace')
+output=$(i3-msg -t get_outputs | jq -r -c 'map(select(.active == true)) | .[] | .name')
+current=$(i3-msg -t get_outputs | jq -r -c 'map(select(.active == true)) | .[] | .current_workspace')
 
 current_index=0
 workspaces=($(i3-msg -t get_workspaces | jq -r -c 'map(select(.output ==  "'${output}'")) | sort_by(.name) | .[] | .name'))

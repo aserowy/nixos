@@ -8,7 +8,7 @@ if [[ -n $SR ]]; then
     echo ""
     echo -n "  "
     read newname
-    i3 rename workspace to $newname
+    i3-msg rename workspace to $newname >/dev/null 2>&1
 fi
 
 # launch alacritty instance with the size we want
