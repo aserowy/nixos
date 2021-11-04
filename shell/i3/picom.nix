@@ -4,7 +4,7 @@
     enable = true;
     experimentalBackends = true;
 
-    activeOpacity = 1;
+    activeOpacity = 1.0;
     backend = "glx";
     fade = true;
     inactiveOpacity = 0.8;
