@@ -1,10 +1,6 @@
 { config, pkgs, ... }:
 {
   environment = {
-    etc = {
-      "i3/config".source = ./src/config;
-    };
-
     pathsToLink = [ "/libexec" ];
   };
 
@@ -27,7 +23,7 @@
 
     windowManager.i3 = {
       enable = true;
-      configFile = /etc/i3/config;
+      configFile = ./src/config;
       extraPackages = with pkgs; [
         dmenu
       ];
