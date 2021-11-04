@@ -14,6 +14,12 @@ then
         *suspend)
             systemctl suspend
             ;;
+        *lock)
+            if [ -z "$WAYLAND_DISPLAY" ]
+            then
+                dm-tool lock
+            fi
+            ;;
         *logout)
             if [ -z "$WAYLAND_DISPLAY" ]
             then

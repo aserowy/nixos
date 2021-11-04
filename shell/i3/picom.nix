@@ -11,7 +11,7 @@
     settings = {
       blur-method = "dual_kawase";
       blur-kern = "3x3box";
-      corner-radius = 12;
+      corner-radius = 6;
     };
     vSync = true;
 

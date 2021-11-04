@@ -24,6 +24,8 @@
       configFile = ./src/config;
       extraPackages = with pkgs; [
         feh
+        jq
+        pv
       ];
       package = pkgs.i3-gaps;
     };

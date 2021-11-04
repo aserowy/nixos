@@ -33,7 +33,7 @@ bindsym $mod+e exec $explorer
 bindsym $mod+f exec $menu
 bindsym $mod+t exec $terminal
 
-## Sway
+## i3
 
 bindsym $mod+q exec /etc/rofi/launch.sh power
 bindsym $mod+Shift+c kill
@@ -41,15 +41,15 @@ bindsym $mod+Shift+r reload
 
 for_window [title="fzf-switcher"] floating enable
 
-bindsym $mod+r exec /etc/sway/scripts/rename_workspace.sh
+bindsym $mod+r exec /etc/i3/scripts/rename_workspace.sh
 bindsym $mod+w exec /etc/rofi/launch.sh workspace
 bindsym $mod+Shift+w exec /etc/rofi/launch.sh move
 
-bindsym $mod+n exec /etc/sway/scripts/focus_workspace.sh next
-bindsym $mod+p exec /etc/sway/scripts/focus_workspace.sh prev
+bindsym $mod+n exec /etc/i3/scripts/focus_workspace.sh next
+bindsym $mod+p exec /etc/i3/scripts/focus_workspace.sh prev
 
 bindsym $mod+m exec /etc/rofi/launch.sh mark
-bindsym $mod+Shift+m exec /etc/sway/scripts/set_mark.sh
+bindsym $mod+Shift+m exec /etc/i3/scripts/set_mark.sh
 
 ## Window
 
