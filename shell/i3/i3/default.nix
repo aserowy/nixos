@@ -26,6 +26,7 @@
       configFile = ./src/config;
       extraPackages = with pkgs; [
         dmenu
+        feh
       ];
       package = pkgs.i3-gaps;
     };

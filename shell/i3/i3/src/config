@@ -1,4 +1,4 @@
-set $browser "microsoft-edge-beta
+set $browser microsoft-edge-beta
 set $explorer wezterm start --class lf -- lf
 
 set $menu exec dmenu
@@ -8,19 +8,16 @@ set $terminal wezterm
 
 # STARTUP
 
+exec --no-startup-id feh --randomize --bg-scale $HOME/onedrive/Wallpapers
+
 exec spotify
 
 # STYLING
 
-default_border pixel 1
+for_window [class=".*"] border pixel 0
 
-client.focused          #61afef #61afef #61afef #61afef #61afef
-client.focused_inactive #282c34 #282c34 #282c34 #282c34 #282c34
-client.urgent           #e06c75 #e06c75 #e06c75 #e06c75 #e06c75
-client.unfocused        #282c34 #282c34 #282c34 #282c34 #282c34
-
-gaps outer 5
-gaps inner 20
+gaps outer 2
+gaps inner 10
 
 # KEYBINDINGS
     
