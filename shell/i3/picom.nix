@@ -4,10 +4,10 @@
     enable = true;
     experimentalBackends = true;
 
-    activeOpacity = 0.95;
+    activeOpacity = 1;
     backend = "glx";
     fade = true;
-    inactiveOpacity = 0.75;
+    inactiveOpacity = 0.8;
     settings = {
       blur-method = "dual_kawase";
       blur-kern = "3x3box";

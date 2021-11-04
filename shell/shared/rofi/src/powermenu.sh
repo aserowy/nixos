@@ -15,7 +15,12 @@ then
             systemctl suspend
             ;;
         *logout)
-            swaymsg exit
+            if [ -z "$WAYLAND_DISPLAY" ]
+            then
+                i3-msg exit
+            else
+                swaymsg exit
+            fi
             ;;
 	esac
 else

@@ -11,6 +11,7 @@
     ../shared/alacritty.nix
     ../shared/dunst.nix
     ../shared/gtk.nix
+    ../shared/rofi
     ../shared/spotify.nix
 
     ./i3

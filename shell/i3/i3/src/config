@@ -1,14 +1,11 @@
 set $browser microsoft-edge-beta
 set $explorer wezterm start --class lf -- lf
-
-set $menu exec dmenu
-#set $menu exec /etc/rofi/launch.sh drun 
-
+set $menu exec /etc/rofi/launch.sh drun 
 set $terminal wezterm
 
 # STARTUP
 
-exec --no-startup-id feh --randomize --bg-scale $HOME/onedrive/Wallpapers
+exec --no-startup-id /etc/i3/scripts/wallpaper.sh
 
 exec spotify
 

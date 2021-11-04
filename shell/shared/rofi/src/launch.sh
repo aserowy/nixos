@@ -15,9 +15,6 @@ then
         power)
             rofi -config /etc/rofi/powermenu.rasi -modi power:/etc/rofi/powermenu.sh -show power
         ;;
-        program)
-            rofi -config /etc/rofi/list.rasi -modi program:/etc/rofi/focus_program.sh -show program
-        ;;
         workspace)
             rofi -config /etc/rofi/list.rasi -modi workspace:/etc/rofi/focus_workspace.sh -show workspace
         ;;

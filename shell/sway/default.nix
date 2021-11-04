@@ -12,13 +12,13 @@
     ../shared/alacritty.nix
     ../shared/dunst.nix
     ../shared/gtk.nix
+    ../shared/rofi
     ../shared/spotify.nix
 
     # FIX: needs config under home
     #./kanshi.nix
 
     ./tuigreeter.nix
-    ./rofi
     ./sway
     ./swayidle.nix
     ./waybar
