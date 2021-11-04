@@ -96,5 +96,3 @@ for_window [class="Spotify"] move container to workspace music
 for_window [class="Spotify"] floating enable
 
 # BAR
-
-exec --no-startup-id xfce4-panel --disable-wm-check
