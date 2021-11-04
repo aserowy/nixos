@@ -12,7 +12,7 @@
       error-color = "#e06c75"
 
       background-image = ""
-      background-color = "#282c34"
+      background-color = "#23272e"
       border-width = 0px
 
       window-color = "#23272e"
