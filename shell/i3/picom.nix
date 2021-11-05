@@ -8,9 +8,12 @@
     backend = "glx";
     fade = true;
     inactiveOpacity = 0.8;
-    menuOpacity = 0.85;
+    menuOpacity = 0.8;
     opacityRules = [
+      "99:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
+
       "99:class_g = 'Microsoft-edge'"
+      "80:class_g = 'Polybar'"
     ];
     settings = {
       blur-background = true;
@@ -23,7 +26,7 @@
     wintypes = {
       tooltip = {
         focus = true;
-        opacity = 0.75;
+        opacity = 0.8;
       };
     };
 
