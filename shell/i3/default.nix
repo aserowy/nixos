@@ -17,6 +17,7 @@
     ./i3
     ./lightdm.nix
     ./picom.nix
+    ./polybar
   ];
 
   fonts = {

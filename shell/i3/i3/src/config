@@ -16,6 +16,8 @@ for_window [class=".*"] border pixel 0
 gaps outer 5
 gaps inner 20
 
+gaps top 48
+
 # KEYBINDINGS
     
 set $mod Mod4
@@ -90,3 +92,5 @@ for_window [class="Spotify"] move container to workspace music
 for_window [class="Spotify"] floating enable
 
 # BAR
+
+exec_always --no-startup-id polybar-launch
