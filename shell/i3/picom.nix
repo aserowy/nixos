@@ -8,7 +8,7 @@
     backend = "glx";
     fade = true;
     inactiveOpacity = 0.8;
-    menuOpacity = 0.9;
+    menuOpacity = 0.85;
     opacityRules = [
       "99:class_g = 'Microsoft-edge'"
     ];
@@ -17,7 +17,7 @@
       blur-method = "dual_kawase";
       blur-kern = "3x3box";
       corner-radius = 6;
-      frame-opacity = 1.0;
+      frame-opacity = 0.9;
     };
     vSync = true;
     wintypes = {
