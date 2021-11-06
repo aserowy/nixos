@@ -18,9 +18,6 @@
               nur.overlay
               fenix.overlay
 
-              # TODO: more elegant way to bind overlay in picom.nix directly
-              (import ./overlays/picom.nix)
-
               (import ./home/pkgs)
             ];
           }
@@ -43,3 +40,4 @@
     };
   };
 }
+

@@ -22,6 +22,7 @@
       corner-radius = 6;
       frame-opacity = 0.9;
     };
+    shadow = true;
     vSync = true;
     wintypes = {
       tooltip = {
@@ -29,8 +30,5 @@
         opacity = 0.8;
       };
     };
-
-    # FIX: rounded border with shadow is bugged
-    shadow = true;
   };
 }
