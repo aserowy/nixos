@@ -7,5 +7,5 @@
 #listview {
     columns: 1;
     cycle: true;
-    lines: 4;
+    lines: 5;
 }

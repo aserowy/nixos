@@ -12,6 +12,11 @@ then
             systemctl reboot
             ;;
         *suspend)
+            if [ -z "$WAYLAND_DISPLAY" ]
+            then
+                dm-tool lock
+            fi
+
             systemctl suspend
             ;;
         *lock)
