@@ -5,6 +5,7 @@
 
     (spotify-spicetified.override {
       theme = "Dribbblish";
+
       # FIX: currently only in own fork (pr into upstream)
       colorScheme = "onedark";
 

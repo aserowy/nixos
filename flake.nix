@@ -24,7 +24,6 @@
 
           ./system/intel_nuc
           ./shell/i3
-
           ./users/serowy.nix
 
           home.nixosModule
