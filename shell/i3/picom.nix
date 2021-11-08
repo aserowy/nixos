@@ -15,6 +15,7 @@
       "99:class_g = 'Microsoft-edge'"
       "80:class_g = 'Polybar'"
       "99:class_g = 'org.remmina.Remmina'"
+      "99:class_g = 'Spotify'"
     ];
     settings = {
       blur-background = true;

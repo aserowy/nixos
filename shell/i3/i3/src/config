@@ -7,8 +7,6 @@ set $terminal wezterm
 
 exec --no-startup-id /etc/i3/scripts/wallpaper.sh
 
-exec spotify
-
 # STYLING
 
 for_window [class=".*"] border pixel 0
@@ -18,7 +16,7 @@ gaps inner 20
 
 gaps top 48
 
-# KEYBINDINGS
+# SETTINGS
     
 set $mod Mod4
 set $alt Mod1
@@ -37,6 +35,8 @@ bindsym $mod+t exec $terminal
 
 ## i3
 
+floating_modifier $mod
+
 bindsym $mod+q exec /etc/rofi/launch.sh power
 bindsym $mod+Shift+c kill
 bindsym $mod+Shift+r reload
@@ -47,11 +47,16 @@ bindsym $mod+r exec /etc/i3/scripts/rename_workspace.sh
 bindsym $mod+w exec /etc/rofi/launch.sh workspace
 bindsym $mod+Shift+w exec /etc/rofi/launch.sh move
 
-bindsym $mod+n exec /etc/i3/scripts/focus_workspace.sh next
-bindsym $mod+p exec /etc/i3/scripts/focus_workspace.sh prev
+bindsym $mod+n workspace next
+bindsym $mod+p workspace prev
 
 bindsym $mod+m exec /etc/rofi/launch.sh mark
 bindsym $mod+Shift+m exec /etc/i3/scripts/set_mark.sh
+
+bindsym $mod+s scratchpad show
+bindsym $mod+Shift+s move scratchpad
+
+workspace_auto_back_and_forth yes
 
 ## Window
 
@@ -84,12 +89,9 @@ bindsym $mod+$alt+$right resize shrink width 20px
 
 # MUSIC
 
-bindsym $mod+s workspace music
+exec spotify
 
-for_window [class="pavucontrol"] move container to workspace music
-
-for_window [class="Spotify"] move container to workspace music
-for_window [class="Spotify"] floating enable
+for_window [class="Spotify"] move scratchpad
 
 # BAR
 
