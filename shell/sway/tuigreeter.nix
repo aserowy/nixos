@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }:
 {
+  boot.kernelParams = [ "console=tty1" ];
+
   environment.systemPackages = with pkgs; [
     greetd.tuigreet
   ];
@@ -12,6 +14,6 @@
         user = "greeter";
       };
     };
-    vt = 1;
+    vt = 2;
   };
 }
