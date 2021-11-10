@@ -48,9 +48,10 @@ sudo swapon /dev/vg/swap
 # install
 nix-shell -p git nixFlakes
 
-sudo git clone https://github.com/aserowy/nixos.git /mnt/etc/nixos
-sudo nixos-install --root /mnt --flake /mnt/etc/nixos#workstation
-sudo rm -rf /mnt/etc/nixos
+sudo git clone https://github.com/aserowy/nixos.git /mnt/etc/dots
+
+# add a new profile with hardware configuration
+sudo nixos-install --root /mnt --flake /mnt/etc/dots#<new profile>
 
 reboot
 ```
