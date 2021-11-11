@@ -3,6 +3,7 @@
   environment.systemPackages = with pkgs; [
     edge
     lf
+    lutris
     pavucontrol
     sway-contrib.grimshot
     wezterm
@@ -40,5 +41,15 @@
 
   services = {
     gnome.gnome-keyring.enable = true;
+
+    onedrive.enable = true;
+  };
+
+  virtualisation = {
+    docker = {
+      enable = true;
+      autoPrune.enable = true;
+      enableOnBoot = true;
+    };
   };
 }

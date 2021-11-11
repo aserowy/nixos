@@ -9,8 +9,6 @@
   networking.hostName = "desktop-workstation";
 
   services = {
-    onedrive.enable = true;
-
     pipewire = {
       enable = true;
       alsa = {
@@ -23,13 +21,5 @@
     };
 
     xserver.videoDrivers = [ "nvidia" ];
-  };
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune.enable = true;
-      enableOnBoot = true;
-    };
   };
 }
