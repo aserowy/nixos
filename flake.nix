@@ -36,6 +36,32 @@
           }
         ];
       };
+      desktop-workstation = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nixpkgs.overlays = [
+              nur.overlay
+              fenix.overlay
+
+              (import ./home/pkgs)
+            ];
+          }
+
+          ./system/workstation
+          ./shell/i3
+          ./users/serowy.nix
+
+          home.nixosModule
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.serowy = import ./home/environments/desktop-i3.nix;
+            };
+          }
+        ];
+      };
     };
   };
 }
