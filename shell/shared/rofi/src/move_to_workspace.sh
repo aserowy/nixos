@@ -7,7 +7,7 @@ else
     workspaces=($(swaymsg -t get_workspaces -r | jq -r -c '.[] | .name'))
 fi
 
-OPTIONS="music\nsocial\n"
+OPTIONS="social\n"
 
 for workspace in "${workspaces[@]}"; do
     if [[ $OPTIONS != *$workspace* ]]
