@@ -10,7 +10,7 @@
 
   outputs = { fenix, home, nixpkgs, nur, ... }: {
     nixosConfigurations = {
-      desktop-nixos = nixpkgs.lib.nixosSystem {
+      homeassistant = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           {
@@ -23,7 +23,7 @@
           }
 
           ./system/intel_nuc
-          ./shell/i3
+          ./shell/headless
           ./users/serowy.nix
 
           home.nixosModule
@@ -31,7 +31,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.serowy = import ./home/environments/desktop-i3.nix;
+              users.serowy = import ./home/environments/desktop-headless.nix;
             };
           }
         ];
