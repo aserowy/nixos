@@ -3,7 +3,11 @@
   environment.systemPackages = with pkgs; [
     edge
     lf
+
     lutris
+    wineWowPackages.staging
+    (winetricks.override { wine = wineWowPackages.staging; })
+
     pavucontrol
     wezterm
   ];

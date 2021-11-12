@@ -30,7 +30,7 @@
   hardware = {
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
-    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_390;
+    nvidia.package = config.boot.kernelPackages.nvidiaPackages.legacy_470;
 
     opengl = {
       enable = lib.mkDefault true;
