@@ -11,6 +11,7 @@
 
   imports = [
     ../shared/alacritty.nix
+    ../shared/clamav.nix
     ../shared/dunst.nix
     ../shared/gtk.nix
     ../shared/rofi
@@ -43,13 +44,5 @@
     gnome.gnome-keyring.enable = true;
 
     onedrive.enable = true;
-  };
-
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune.enable = true;
-      enableOnBoot = true;
-    };
   };
 }

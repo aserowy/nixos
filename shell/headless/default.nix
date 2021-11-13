@@ -5,11 +5,7 @@
     wezterm
   ];
 
-  virtualisation = {
-    docker = {
-      enable = true;
-      autoPrune.enable = true;
-      enableOnBoot = true;
-    };
-  };
+  imports = [
+    ../shared/clamav.nix
+  ];
 }
