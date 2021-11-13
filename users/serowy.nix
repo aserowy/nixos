@@ -6,7 +6,7 @@
       extraGroups = [
         "audio"
         "disk"
-        "docker"
+        /* "docker" */
         "networkmanager"
         "video"
         "wheel"
