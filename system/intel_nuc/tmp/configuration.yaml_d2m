@@ -1,0 +1,10 @@
+hassio:
+  discovery: true
+
+mqtt:
+  client_id: raspberrypi
+  host: mosquitto
+  port: 1883
+  username: homeassistant
+  password: <pw>
+  qos: 1

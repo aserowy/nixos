@@ -15,6 +15,7 @@ then
             if [ -z "$WAYLAND_DISPLAY" ]
             then
                 dm-tool lock
+                sleep 1
             fi
 
             systemctl suspend
