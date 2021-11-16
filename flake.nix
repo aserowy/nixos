@@ -13,15 +13,6 @@
       homeassistant = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
-          {
-            nixpkgs.overlays = [
-              nur.overlay
-              fenix.overlay
-
-              (import ./home/pkgs)
-            ];
-          }
-
           ./system/intel_nuc
           ./shell/headless
           ./users/serowy.nix
@@ -41,9 +32,7 @@
         modules = [
           {
             nixpkgs.overlays = [
-              nur.overlay
               fenix.overlay
-
               (import ./home/pkgs)
             ];
           }
