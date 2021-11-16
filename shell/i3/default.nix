@@ -3,7 +3,6 @@
   environment.systemPackages = with pkgs; [
     edge
     lf
-    lutris
     pavucontrol
     wezterm
   ];
@@ -13,6 +12,7 @@
     ../shared/clamav.nix
     ../shared/dunst.nix
     ../shared/gtk.nix
+    ../shared/lutris.nix
     ../shared/rofi
     ../shared/spotify.nix
 
