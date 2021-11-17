@@ -4,11 +4,11 @@
     lutris
   ];
 
-  systemd.user.extraConfig = ''
+  systemd.extraConfig = ''
     DefaultLimitNOFILE=1048576
   '';
 
-  systemd.extraConfig = ''
+  systemd.user.extraConfig = ''
     DefaultLimitNOFILE=1048576
   '';
 }
