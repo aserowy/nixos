@@ -56,10 +56,11 @@ let
           - "80:80/tcp"
         environment:
           TZ: 'Europe/Berlin'
-          WEBPASSWORD: <pw>
+          # Run docker logs pihole | grep random to find your random pass.
+          # WEBPASSWORD: <pw>
         volumes:
-          - /srv/pihole/:/etc/pihole/
-          - /srv/dnsmasq.d/:/etc/dnsmasq.d/
+          - /srv/pihole/config/:/etc/pihole/
+          - /srv/pihole/dnsmasq.d/:/etc/dnsmasq.d/
         cap_add:
           - NET_ADMIN
         restart: always
@@ -84,11 +85,11 @@ let
         environment:
           - WATCHTOWER_CLEANUP=true
           - WATCHTOWER_INCLUDE_RESTARTING=true
-          - WATCHTOWER_POLL_INTERVAL=82800
+          - WATCHTOWER_INCLUDE_STOPPED=true
+          - WATCHTOWER_SCHEDULE="0 0 4 * * *"
         volumes:
-          - /etc/timezone:/etc/timezone:ro
+          - /etc/localtime:/etc/localtime:ro
           - /var/run/docker.sock:/var/run/docker.sock
-
   '';
 in
 {
