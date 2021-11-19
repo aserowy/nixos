@@ -5,7 +5,7 @@
 
     ./borgbackup.nix
     ./hardware-configuration.nix
-    ./hassio
+    ./hassio.nix
   ];
 
   networking.hostName = "homeassistant";
