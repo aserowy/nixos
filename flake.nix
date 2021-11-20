@@ -33,6 +33,7 @@
           {
             nixpkgs.overlays = [
               fenix.overlay
+
               (import ./home/pkgs)
             ];
           }
@@ -54,3 +55,4 @@
     };
   };
 }
+
