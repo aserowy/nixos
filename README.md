@@ -18,7 +18,7 @@ sudo parted -a opt --script "${ROOT_DISK}" \
     set 2 lvm on \
     name 2 root
 
-fdisk ${ROOT_DISK} -l
+sudo fdisk ${ROOT_DISK} -l
 
 # setup virtuals
 sudo vgcreate vg ${ROOT_DISK}2
@@ -26,7 +26,7 @@ sudo vgcreate vg ${ROOT_DISK}2
 sudo lvcreate -L 8G -n swap vg
 sudo lvcreate -l '100%FREE' -n root vg
 
-lvdisplay
+sudo lvdisplay
 
 # format partitions
 sudo mkfs.fat -F 32 -n boot /dev/disk/by-partlabel/boot
@@ -48,7 +48,7 @@ sudo swapon /dev/vg/swap
 # install
 nix-shell -p git nixFlakes
 
-sudo git clone https://github.com/aserowy/nixos.git /mnt/etc/dots
+sudo git clone --recurse-submodules -j8 https://github.com/aserowy/nixos.git /mnt/etc/dots
 
 # add a new profile with hardware configuration
 sudo nixos-install --root /mnt --flake /mnt/etc/dots#<new profile>
