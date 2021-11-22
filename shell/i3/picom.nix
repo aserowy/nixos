@@ -12,10 +12,12 @@
     opacityRules = [
       "100:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
 
+      "100:class_g = 'gw2-64.exe'"
       "100:class_g = 'Microsoft-edge'"
       "80:class_g = 'Polybar'"
       "100:class_g = 'org.remmina.Remmina'"
       "100:class_g = 'Spotify'"
+      "100:class_g = 'Wine'"
     ];
     settings = {
       blur-background = true;
