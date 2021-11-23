@@ -87,6 +87,10 @@ bindsym $mod+$alt+$up resize shrink height 5px
 bindsym $mod+$alt+$left resize grow width 20px
 bindsym $mod+$alt+$right resize shrink width 20px
 
+# GAMING
+
+for_window [title="MTGA"] floating disable
+
 # MUSIC
 
 exec spotify

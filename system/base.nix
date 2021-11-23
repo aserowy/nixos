@@ -62,6 +62,10 @@
       enable = true;
       packages = [ pkgs.dconf ];
     };
+    logind.extraConfig = ''
+      # don’t shutdown when power button is short-pressed
+      HandlePowerKey=suspend
+    '';
     openssh = {
       enable = true;
       permitRootLogin = "no";
