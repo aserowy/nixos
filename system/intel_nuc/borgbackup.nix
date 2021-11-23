@@ -19,7 +19,7 @@
       weekly = 4;
       monthly = 6;
     };
-    repo = "<repourl>:repo";
+    repo = "kuji7rr6@kuji7rr6.repo.borgbase.com:repo";
     startAt = "daily";
   };
 }
