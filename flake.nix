@@ -22,6 +22,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+
               users.serowy = import ./home/environments/desktop-headless.nix;
             };
           }
@@ -47,6 +48,7 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
+
               users.serowy = import ./home/environments/desktop-i3.nix;
             };
           }
@@ -55,3 +57,4 @@
     };
   };
 }
+
