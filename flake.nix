@@ -3,17 +3,20 @@
 
   inputs = {
     fenix.url = "github:nix-community/fenix";
+    hardware.url = "github:NixOS/nixos-hardware/master";
     home.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nur.url = "github:nix-community/NUR";
   };
 
-  outputs = { fenix, home, nixpkgs, nur, ... }: {
+  outputs = { fenix, hardware, home, nixpkgs, nur, ... }: {
     nixosConfigurations = {
       homeassistant = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         modules = [
-          ./system/intel_nuc
+          hardware.nixosModules.raspberry-pi-4
+
+          ./system/homeassistant
           ./shell/headless
           ./users/serowy.nix
 
