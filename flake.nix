@@ -11,12 +11,29 @@
 
   outputs = { fenix, hardware, home, nixpkgs, nur, ... }: {
     nixosConfigurations = {
-      homeassistant = nixpkgs.lib.nixosSystem {
+      /* homeassistant = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
           hardware.nixosModules.raspberry-pi-4
 
           ./system/homeassistant
+          ./shell/headless
+          ./users/serowy.nix
+
+          home.nixosModule
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.serowy = import ./home/environments/desktop-headless.nix;
+            };
+          }
+        ];
+      }; */
+      homeassistant = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./system/intel_nuc
           ./shell/headless
           ./users/serowy.nix
 
