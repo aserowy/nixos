@@ -1,116 +1,126 @@
 { config, pkgs, ... }:
-let
-  compose = pkgs.writeText "hassio-docker-compose" ''
-    version: "3.0"
-    services:
-      ### home assistant
-      mosquitto:
-        image: eclipse-mosquitto:latest
-        container_name: mosquitto
-        restart: always
-        ports:
-          - "1883:1883"
-          - "9001:9001"
-        volumes:
-          - /srv/mosquitto/config:/mosquitto/config
-          - /srv/mosquitto/data:/mosquitto/data
-          - /srv/mosquitto/log:/mosquitto/log
-
-      zigbee2mqtt:
-        image: koenkk/zigbee2mqtt:latest
-        container_name: zigbee2mqtt
-        restart: always
-        environment:
-          - TZ=Europe/Berlin
-        depends_on:
-          - mosquitto
-        devices:
-          - /dev/ttyAMA0:/dev/ttyAMA0
-        ports:
-          - "8124:8080"
-        volumes:
-          - /srv/zigbee2mqtt:/app/data
-          - /run/udev:/run/udev:ro
-
-      home-assistant:
-        image: homeassistant/home-assistant:stable
-        container_name: home-assistant
-        restart: always
-        network_mode: "host"
-        depends_on:
-          - zigbee2mqtt
-        devices:
-          - /dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0:/dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0
-        volumes:
-          - /srv/home-assistant:/config
-          - /etc/localtime:/etc/localtime:ro
-
-      ### pihole
-      pihole:
-        container_name: pihole
-        image: pihole/pihole:latest
-        ports:
-          - "53:53/tcp"
-          - "53:53/udp"
-          - "67:67/udp"
-          - "80:80/tcp"
-        environment:
-          TZ: 'Europe/Berlin'
-          # Run docker logs pihole | grep random to find your random pass.
-          # WEBPASSWORD: <pw>
-        volumes:
-          - /srv/pihole/config/:/etc/pihole/
-          - /srv/pihole/dnsmasq.d/:/etc/dnsmasq.d/
-        cap_add:
-          - NET_ADMIN
-        restart: always
-
-      ### monitor
-      docker2mqtt:
-        image: serowy/docker2mqtt:latest
-        container_name: docker2mqtt
-        restart: always
-        depends_on:
-          - mosquitto
-        volumes:
-          - /srv/docker2mqtt/config:/docker2mqtt/config
-          - /srv/docker2mqtt/logs:/docker2mqtt/logs
-          - /var/run/docker.sock:/var/run/docker.sock
-
-      ### update
-      watchtower:
-        image: containrrr/watchtower:latest
-        container_name: watchtower
-        restart: always
-        environment:
-          - WATCHTOWER_CLEANUP=true
-          - WATCHTOWER_INCLUDE_RESTARTING=true
-          - WATCHTOWER_INCLUDE_STOPPED=true
-          - WATCHTOWER_SCHEDULE="0 0 4 * * *"
-        volumes:
-          - /etc/localtime:/etc/localtime:ro
-          - /var/run/docker.sock:/var/run/docker.sock
-  '';
-in
 {
-  environment.systemPackages = with pkgs; [
-    docker-compose
-  ];
-
-  systemd.services.hassio-docker-compose = {
-    after = [ "docker.service" ];
-    description = "hassio docker compose spin up";
-    path = [ pkgs.bash ];
-    serviceConfig = {
-      ExecStart = "${pkgs.docker-compose}/bin/docker-compose --file ${compose} up";
-      ExecStop = "${pkgs.docker-compose}/bin/docker-compose --file ${compose} down";
-      Restart = "on-failure";
-      StartLimitIntervalSec = 60;
-      StartLimitBurst = 3;
-      TimeoutStartSec = 0;
-      WorkingDirectory = "/srv";
-    };
-    requires = [ "docker.service" ];
+  systemd.services.init-filerun-network-and-files = {
+    description = "Create the network bridge ha-network for home-assistant.";
+    after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
+
+    serviceConfig.Type = "oneshot";
+    script =
+      let dockercli = "${config.virtualisation.docker.package}/bin/docker";
+      in
+      ''
+        # Put a true at the end to prevent getting non-zero return code, which will
+        # crash the whole service.
+        check=$(${dockercli} network ls | grep "ha-network" || true)
+        if [ -z "$check" ]; then
+          ${dockercli} network create ha-network
+        else
+          echo "ha-network already exists in docker"
+        fi
+      '';
+  };
+
+  virtualisation.oci-containers.containers = {
+    "mosquitto" = {
+      image = "eclipse-mosquitto:latest";
+      extraOptions = [
+        "--network=ha-network"
+      ];
+      volumes = [
+        "/srv/mosquitto/config:/mosquitto/config"
+        "/srv/mosquitto/data:/mosquitto/data"
+        "/srv/mosquitto/log:/mosquitto/log"
+      ];
+    };
+
+    "zigbee2mqtt" = {
+      image = "koenkk/zigbee2mqtt:latest";
+      environment = {
+        "TZ" = "Europe/Berlin";
+      };
+      dependsOn = [
+        "mosquitto"
+      ];
+      extraOptions = [
+        "--network=ha-network"
+        "--device=/dev/ttyUSB0:/dev/ttyUSB0"
+      ];
+      ports = [
+        "8124:8080"
+      ];
+      volumes = [
+        "/srv/zigbee2mqtt:/app/data"
+        "/run/udev:/run/udev:ro"
+      ];
+    };
+
+    "home-assistant" = {
+      image = "homeassistant/home-assistant:stable";
+      extraOptions = [
+        "--network=ha-network"
+        /* "--device=/dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0:/dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0" */
+      ];
+      dependsOn = [
+        "mosquitto"
+      ];
+      ports = [
+        "8123:8123"
+      ];
+      volumes = [
+        "/srv/home-assistant:/config"
+        "/etc/localtime:/etc/localtime:ro"
+      ];
+    };
+    "docker2mqtt" = {
+      image = "serowy/docker2mqtt:latest";
+      extraOptions = [
+        "--network=ha-network"
+      ];
+      dependsOn = [
+        "mosquitto"
+      ];
+      volumes = [
+        "/srv/docker2mqtt/config:/docker2mqtt/config"
+        "/srv/docker2mqtt/logs:/docker2mqtt/logs"
+        "/var/run/docker.sock:/var/run/docker.sock"
+      ];
+    };
+
+    "pihole" = {
+      image = "pihole/pihole:latest";
+      environment = {
+        "TZ" = "Europe/Berlin";
+        # Run docker logs pihole | grep random to find your random pass.
+        # WEBPASSWORD: <pw>
+      };
+      extraOptions = [
+        "--cap-add=NET_ADMIN"
+      ];
+      ports = [
+        "53:53/tcp"
+        "53:53/udp"
+        "67:67/udp"
+        "80:80/tcp"
+      ];
+      volumes = [
+        "/srv/pihole/config/:/etc/pihole/"
+        "/srv/pihole/dnsmasq.d/:/etc/dnsmasq.d/"
+      ];
+    };
+
+    "watchtower" = {
+      image = "containrrr/watchtower:latest";
+      environment = {
+        "WATCHTOWER_CLEANUP" = "true";
+        "WATCHTOWER_INCLUDE_RESTARTING" = "true";
+        "WATCHTOWER_INCLUDE_STOPPED" = "true";
+        "WATCHTOWER_SCHEDULE" = "0 0 4 * * *";
+      };
+      volumes = [
+        "/etc/localtime:/etc/localtime:ro"
+        "/var/run/docker.sock:/var/run/docker.sock"
+      ];
+    };
   };
 }
