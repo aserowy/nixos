@@ -3,8 +3,8 @@
   imports = [
     ../base.nix
 
-    ./borgbackup.nix
-    ./hassio.nix
+    ../intel_nuc/borgbackup.nix
+    ../intel_nuc/hassio.nix
   ];
 
   networking.hostName = "homeassistant";

@@ -1,6 +1,13 @@
 { config, pkgs, ... }:
 {
-  # https://christine.website/blog/borg-backup-2021-01-09
+  /*
+    https://christine.website/blog/borg-backup-2021-01-09
+
+    mkdir mount
+    borg-job-borgbase mount kuji7rr6@kuji7rr6.repo.borgbase.com:repo ./mount
+
+    borg-job-borgbase umount ./mount
+  */
   services.borgbackup.jobs."borgbase" = {
     compression = "auto,lzma";
     encryption = {

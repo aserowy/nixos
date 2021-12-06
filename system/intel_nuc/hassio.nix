@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  systemd.services.init-filerun-network-and-files = {
+  systemd.services.init-docker-ha-network = {
     description = "Create the network bridge ha-network for home-assistant.";
     after = [ "network.target" ];
     wantedBy = [ "multi-user.target" ];
