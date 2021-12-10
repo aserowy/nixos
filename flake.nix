@@ -11,6 +11,31 @@
 
   outputs = { fenix, hardware, home, nixpkgs, nur, ... }: {
     nixosConfigurations = {
+      desktop-workstation = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          {
+            nixpkgs.overlays = [
+              fenix.overlay
+
+              (import ./home/pkgs)
+            ];
+          }
+
+          ./system/workstation
+          ./shell/i3
+          ./users/serowy.nix
+
+          home.nixosModule
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.serowy = import ./home/environments/desktop-i3.nix;
+            };
+          }
+        ];
+      };
       /* homeassistant = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
@@ -43,31 +68,6 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.serowy = import ./home/environments/desktop-headless.nix;
-            };
-          }
-        ];
-      };
-      desktop-workstation = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          {
-            nixpkgs.overlays = [
-              fenix.overlay
-
-              (import ./home/pkgs)
-            ];
-          }
-
-          ./system/workstation
-          ./shell/i3
-          ./users/serowy.nix
-
-          home.nixosModule
-          {
-            home-manager = {
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              users.serowy = import ./home/environments/desktop-i3.nix;
             };
           }
         ];

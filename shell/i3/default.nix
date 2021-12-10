@@ -17,7 +17,7 @@
     ../shared/spotify.nix
 
     ./i3
-    ./lightdm.nix
+    /* ./lightdm.nix */
     ./picom.nix
     ./polybar
   ];

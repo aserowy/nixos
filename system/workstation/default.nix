@@ -9,6 +9,9 @@
   networking.hostName = "desktop-workstation";
 
   services = {
+    # lsblk --discard to ensure ssd supports trim (disc-gran and disc-max should be non zero)
+    fstrim.enable = true;
+
     pipewire = {
       enable = true;
       alsa = {
