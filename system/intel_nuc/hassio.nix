@@ -44,7 +44,7 @@
       ];
       extraOptions = [
         "--network=ha-network"
-        "--device=/dev/ttyUSB0:/dev/ttyUSB0"
+        "--device=/dev/serial/by-id/usb-1a86_USB_Serial-if00-port0:/dev/ttyUSB0"
       ];
       ports = [
         "8124:8080"
@@ -59,12 +59,13 @@
       image = "homeassistant/home-assistant:stable";
       extraOptions = [
         "--network=ha-network"
-        /* "--device=/dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0:/dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0" */
+        "--device=/dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0:/dev/serial/by-id/usb-EnOcean_GmbH_EnOcean_USB_300_DC_FT50B8B0-if00-port0"
       ];
       dependsOn = [
         "mosquitto"
       ];
       ports = [
+        "80:8123"
         "8123:8123"
       ];
       volumes = [
@@ -101,7 +102,7 @@
         "53:53/tcp"
         "53:53/udp"
         "67:67/udp"
-        "80:80/tcp"
+        "8125:80/tcp"
       ];
       volumes = [
         "/srv/pihole/config/:/etc/pihole/"
