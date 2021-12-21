@@ -1,4 +1,4 @@
-name: "auto_approve_dependabot"
+name: "auto_merge_dependabot"
 
 on: pull_request_target
 
