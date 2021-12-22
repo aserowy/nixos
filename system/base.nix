@@ -72,6 +72,7 @@
       passwordAuthentication = false;
       ports = [ 2022 ];
     };
+    xserver.xkbOptions = "compose:ralt";
   };
 
   system = {
