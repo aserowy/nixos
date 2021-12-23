@@ -62,21 +62,27 @@
       enable = true;
       packages = [ pkgs.dconf ];
     };
+
+    # don’t shutdown when power button is short-pressed
     logind.extraConfig = ''
-      # don’t shutdown when power button is short-pressed
       HandlePowerKey=suspend
     '';
+
     openssh = {
       enable = true;
       permitRootLogin = "no";
       passwordAuthentication = false;
       ports = [ 2022 ];
     };
+
+    # compose on right alt to be able to write äöüß
     xserver.xkbOptions = "compose:ralt";
   };
 
   system = {
-    stateVersion = "21.05"; # Did you read the comment?
+    # Did you read the comment?
+    stateVersion = "21.05";
+
     autoUpgrade = {
       enable = true;
       allowReboot = true;
