@@ -2,9 +2,9 @@
 {
   imports = [
     ../base.nix
+    ./hardware-configuration.nix
 
     ./borgbackup.nix
-    ./hardware-configuration.nix
     ./hassio.nix
   ];
 

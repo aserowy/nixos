@@ -36,7 +36,7 @@
           }
         ];
       };
-      /* homeassistant = nixpkgs.lib.nixosSystem {
+      homeassistant-test = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         modules = [
           hardware.nixosModules.raspberry-pi-4
@@ -54,7 +54,7 @@
             };
           }
         ];
-      }; */
+      };
       homeassistant = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
