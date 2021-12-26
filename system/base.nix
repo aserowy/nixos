@@ -14,7 +14,6 @@
       allowPing = true;
     };
     useDHCP = false;
-    interfaces.eno1.useDHCP = true;
   };
 
   nix = {

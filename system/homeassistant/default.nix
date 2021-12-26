@@ -8,7 +8,10 @@
     ../intel_nuc/hassio.nix
   ];
 
-  networking.hostName = "homeassistant-test";
+  networking = {
+    hostName = "homeassistant-test";
+    interfaces.eth0.useDHCP = true;
+  };
 
   virtualisation = {
     docker = {

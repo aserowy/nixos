@@ -15,7 +15,10 @@
     };
   };
 
-  networking.hostName = "homeassistant";
+  networking = {
+    hostName = "homeassistant";
+    interfaces.eno1.useDHCP = true;
+  };
 
   services = {
     # lsblk --discard to ensure ssd supports trim (disc-gran and disc-max should be non zero)

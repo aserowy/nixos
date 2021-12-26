@@ -13,7 +13,10 @@
     };
   };
 
-  networking.hostName = "desktop-workstation";
+  networking = {
+    hostName = "desktop-workstation";
+    interfaces.eno1.useDHCP = true;
+  };
 
   services = {
     # lsblk --discard to ensure ssd supports trim
