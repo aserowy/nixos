@@ -5,6 +5,7 @@
     lf
     pavucontrol
     wezterm
+    xclip
   ];
 
   imports = [
