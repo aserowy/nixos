@@ -36,13 +36,11 @@
           }
         ];
       };
-      homeassistant-test = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
+      desktop-nuc = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
         modules = [
-          hardware.nixosModules.raspberry-pi-4
-
-          ./system/homeassistant
-          ./shell/headless
+          ./system/intel_nuc
+          ./shell/i3
           ./users/serowy.nix
 
           home.nixosModule
@@ -50,15 +48,17 @@
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              users.serowy = import ./home/environments/desktop-headless.nix;
+              users.serowy = import ./home/environments/desktop-i3.nix;
             };
           }
         ];
       };
       homeassistant = nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
+        system = "aarch64-linux";
         modules = [
-          ./system/intel_nuc
+          hardware.nixosModules.raspberry-pi-4
+
+          ./system/homeassistant
           ./shell/headless
           ./users/serowy.nix
 

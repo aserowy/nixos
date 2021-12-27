@@ -4,12 +4,12 @@
     ../base.nix
     ./hardware-configuration.nix
 
-    ../intel_nuc/borgbackup.nix
-    ../intel_nuc/hassio.nix
+    ./borgbackup.nix
+    ./hassio.nix
   ];
 
   networking = {
-    hostName = "homeassistant-test";
+    hostName = "homeassistant";
     interfaces.eth0.useDHCP = true;
   };
 

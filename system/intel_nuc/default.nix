@@ -3,9 +3,6 @@
   imports = [
     ../base.nix
     ./hardware-configuration.nix
-
-    ./borgbackup.nix
-    ./hassio.nix
   ];
 
   boot = {
@@ -16,7 +13,7 @@
   };
 
   networking = {
-    hostName = "homeassistant";
+    hostName = "desktop-nuc";
     interfaces.eno1.useDHCP = true;
   };
 
