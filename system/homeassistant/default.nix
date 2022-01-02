@@ -8,9 +8,14 @@
     ./hassio.nix
   ];
 
+  boot.loader.raspberryPi.firmwareConfig = "dtparam=sd_poll_once=on";
+
   networking = {
     hostName = "homeassistant";
     interfaces.eth0.useDHCP = true;
+
+    # enables wifi with: nmcli device wifi connect <SSID> password <PASS>
+    networkmanager.enable = true;
   };
 
   virtualisation = {
