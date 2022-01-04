@@ -7,8 +7,8 @@
     activeOpacity = 1.0;
     backend = "glx";
     fade = true;
-    inactiveOpacity = 0.8;
-    menuOpacity = 0.8;
+    inactiveOpacity = 0.85;
+    menuOpacity = 0.85;
     opacityRules = [
       "100:_NET_WM_STATE@:32a = '_NET_WM_STATE_FULLSCREEN'"
 
@@ -30,11 +30,11 @@
     wintypes = {
       notification = {
         focus = true;
-        opacity = 0.8;
+        opacity = 0.85;
       };
       tooltip = {
         focus = true;
-        opacity = 0.8;
+        opacity = 0.85;
       };
     };
   };
